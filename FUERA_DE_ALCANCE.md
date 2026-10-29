@@ -22,3 +22,5 @@
 9. **Más de un item por orden y matching difuso de nombres.** Comparo nombres exactos, ignorando
    mayúsculas y espacios extra.
 10. **Usar `created_at`.** Está mal (dice UTC y no lo es) y el resumen no lo necesita.
+11. **Reintentos ante timeouts de red.** Reintento 5xx y 429, pero no un timeout. Igual es seguro
+    volver a correr el script: antes de crear, busca la orden por `client_ref`.

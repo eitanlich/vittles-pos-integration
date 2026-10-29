@@ -11,6 +11,7 @@ import json
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from decimal import Decimal
 
@@ -130,7 +131,7 @@ class VittlesClient:
 
     def find_orders_by_ref(self, client_ref):
         # Undocumented endpoint, but the only way to get real idempotency (see README).
-        data = self.request("GET", f"/v1/orders?client_ref={urllib.request.quote(client_ref)}")
+        data = self.request("GET", f"/v1/orders?client_ref={urllib.parse.quote(client_ref)}")
         return data.get("data", [])
 
     def create_order(self, location_id, client_ref, item_id, quantity):
